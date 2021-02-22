@@ -8,7 +8,7 @@ import Espada
 why = 'Você morreu para o dragão'
 
 
-def death(why):
+def death():
     print(f'{why}, Bom trabalho.')
     exit(0)
 
@@ -45,6 +45,8 @@ def wakeup():
 
 # função da porta vermelha
 bau = ['espada','escudo','chave','ouro']
+
+
 def red_door_inside():
     print('você abre a porta, é uma sala pequena com um bau a sua direita, e uma porta a sua frente')
     time.sleep(2)
@@ -52,13 +54,13 @@ def red_door_inside():
     if chest_or_guard.lower() in ["frente","porta","reto","adiante"]:
         print('você se direciona a porta')
         exit(0)
-#usar "if chest_or_guard.lower()..." ao inves de "if "porta" in chest_or_guard:" permite a captura de caracteres
-#maiusculos também, já que o comando ".lower" coloca todos caracteres em minusculo, diminuindo as chances de erro.
+# usar "if chest_or_guard.lower()..." ao inves de "if "porta" in chest_or_guard:" permite a captura de caracteres
+# maiusculos também, já que o comando ".lower" coloca todos caracteres em minusculo, diminuindo as chances de erro.
     elif chest_or_guard.lower() in ["bau","baú","direita","chest"]:
         print('você se direciona ao baú')
         num_chess_itens = len(bau)
         time.sleep(2)
-        print(f'você abre o baú e se depara com: ',{num_chess_itens},"itens")
+        print(f'você abre o baú e se depara com:',num_chess_itens,"itens")
         time.sleep(2)
         print('sendo eles:')
         for treasure in bau:
@@ -67,32 +69,19 @@ def red_door_inside():
         item = input('qual item você pegará ?')
         if "espada" in item:
             print('O caminho da espada...')
-            Espada()
-
-
+            time.sleep(2)
+            Espada.espada()
         elif "escudo" in item:
             print('o caminho da segurança')
-
-
         elif "chave" in item:
             print('uma chave para a... ?')
-
-
         elif "ouro" in item:
             print('ganancia?')
-
-
         else:
             print('não é uma opção')
-
-
-
-
     else:
         print('não é uma opção')
         return red_door_inside()
-
-
 
 
 # função da porta azul
@@ -106,7 +95,8 @@ def blue_door_inside():
         time.sleep(2)
         exit()
     elif "ficar" in action:
-        death(why)
+        death()
+        time.sleep(2)
         inicio()
     else:
         print('isso nem sequer é uma opção')
